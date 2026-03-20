@@ -102,8 +102,22 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Base gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050510] via-[#0a1128] to-[#0a1128]" />
+      {/* Video background */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.25) saturate(0.6)' }}
+        >
+          <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Dark overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050510]/70 via-[#0a1128]/60 to-[#0a1128]" />
 
       {/* Animated mesh gradient background */}
       <HeroMeshGradient />

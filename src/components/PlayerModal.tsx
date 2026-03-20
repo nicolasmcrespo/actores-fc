@@ -44,7 +44,7 @@ export function PlayerModal({ player, onClose }: Props) {
   const isActriz = player.type === 'actriz';
   const initials = player.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
   const rating = getRating(player);
-  const photoUrl = player.instagram ? `https://unavatar.io/instagram/${player.instagram}` : '';
+  const photoUrl = player.instagram ? `${import.meta.env.BASE_URL}players/${player.instagram}.jpg` : '';
 
   return (
     <div

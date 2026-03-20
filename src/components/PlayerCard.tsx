@@ -78,10 +78,9 @@ function getRating(player: Player): string {
   return '76';
 }
 
-function getPhotoUrl(_player: Player): string {
-  // unavatar.io/instagram endpoint is broken (returns fallback for all handles)
-  // Disabled until a working image source is available
-  return '';
+function getPhotoUrl(player: Player): string {
+  if (!player.instagram) return '';
+  return `${import.meta.env.BASE_URL}players/${player.instagram}.jpg`;
 }
 
 export function PlayerCard({ player, index, isVisible, onSelect }: Props) {
