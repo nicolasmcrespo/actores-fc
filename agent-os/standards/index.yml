@@ -1,0 +1,128 @@
+# Agent OS Standards Index
+
+backend:
+  api:
+    description: Needs description - run /index-standards
+  migrations:
+    description: Needs description - run /index-standards
+  models:
+    description: Needs description - run /index-standards
+  queries:
+    description: Needs description - run /index-standards
+
+code-style:
+  css-style:
+    description: Needs description - run /index-standards
+  html-style:
+    description: Needs description - run /index-standards
+  javascript-style:
+    description: Needs description - run /index-standards
+  react:
+    description: Needs description - run /index-standards
+  shadcn:
+    description: Needs description - run /index-standards
+  tailwind:
+    description: Needs description - run /index-standards
+  typescript:
+    description: Needs description - run /index-standards
+
+components:
+  button:
+    description: Needs description - run /index-standards
+  input:
+    description: Needs description - run /index-standards
+  modal:
+    description: Needs description - run /index-standards
+  forms:
+    description: Needs description - run /index-standards
+  accessibility:
+    description: Needs description - run /index-standards
+  composition:
+    description: Needs description - run /index-standards
+  performance:
+    description: Needs description - run /index-standards
+
+frontend:
+  accessibility:
+    description: Needs description - run /index-standards
+  accent-theming:
+    description: Dual-team color theming (blue=actores, gold=actrices) — extensible for future teams
+  card-interactions:
+    description: FIFA-style card-glow + spotlight-card mouse-tracking pattern — always paired together
+  color-palette:
+    description: Official Actores FC brand colors — navy/gold palette with CSS custom properties
+  components:
+    description: Needs description - run /index-standards
+  css:
+    description: Needs description - run /index-standards
+  rating-system:
+    description: FIFA-style rating (76-99) derived from combined social media followers
+  responsive:
+    description: Needs description - run /index-standards
+  scroll-reveal:
+    description: useInView hook + CSS transitions for section entrance animations — required on every section
+  section-layout:
+    description: Consistent section pattern — divider, max-width container, subtitle/title header
+  typography:
+    description: Strict 3-font system (Bebas Neue / Oswald / Inter) — roles, sizing, and rules
+
+global:
+  coding-style:
+    description: Needs description - run /index-standards
+  commenting:
+    description: Needs description - run /index-standards
+  conventions:
+    description: Needs description - run /index-standards
+  error-handling:
+    description: Needs description - run /index-standards
+  tech-stack:
+    description: Needs description - run /index-standards
+  validation:
+    description: Needs description - run /index-standards
+
+integration:
+  orm-patterns:
+    description: Needs description - run /index-standards
+  api-contracts:
+    description: Needs description - run /index-standards
+  state-management:
+    description: Needs description - run /index-standards
+
+project-types:
+  mobile-app:
+    description: Needs description - run /index-standards
+  saas-platform:
+    description: Needs description - run /index-standards
+  web-app:
+    description: Needs description - run /index-standards
+
+technologies:
+  auth:
+    description: Needs description - run /index-standards
+  deployment:
+    description: Needs description - run /index-standards
+  best-practices:
+    description: Needs description - run /index-standards
+  implementation:
+    description: Needs description - run /index-standards
+  testing:
+    description: Needs description - run /index-standards
+  components:
+    description: Needs description - run /index-standards
+  auth:
+    description: Needs description - run /index-standards
+  config:
+    description: Needs description - run /index-standards
+  utilities:
+    description: Needs description - run /index-standards
+  config:
+    description: Needs description - run /index-standards
+  patterns:
+    description: Needs description - run /index-standards
+  types:
+    description: Needs description - run /index-standards
+
+testing:
+  test-writing:
+    description: Needs description - run /index-standards
+
