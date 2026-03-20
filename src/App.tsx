@@ -8,7 +8,7 @@ import { Alcance } from './components/Alcance';
 import { Shop } from './components/Shop';
 import { Footer } from './components/Footer';
 import { PlayerModal } from './components/PlayerModal';
-import { actores, actrices, dt, type Player } from './data/players';
+import { actores, actrices, staff, type Player } from './data/players';
 
 function App() {
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
@@ -26,7 +26,7 @@ function App() {
         subtitle="Actores Futbol Club"
         players={actores}
         accent="blue"
-        dt={dt}
+        staff={staff}
         onSelectPlayer={setSelectedPlayer}
       />
       <Marquee />

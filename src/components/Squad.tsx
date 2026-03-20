@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useInView } from '../hooks/useInView';
 import { PlayerCard } from './PlayerCard';
-import { type Player } from '../data/players';
+import { type Player, type Staff } from '../data/players';
 
 interface Props {
   id: string;
@@ -9,11 +9,58 @@ interface Props {
   subtitle: string;
   players: Player[];
   accent?: 'blue' | 'gold';
-  dt?: { name: string; role: string; instagram: string; igFollowers: string };
+  staff?: Staff[];
   onSelectPlayer?: (player: Player) => void;
 }
 
-export function Squad({ id, title, subtitle, players, accent: _accent = 'blue', dt, onSelectPlayer }: Props) {
+function StaffCard({ member }: { member: Staff }) {
+  const photoUrl = member.instagram ? `${import.meta.env.BASE_URL}players/${member.instagram}.jpg` : '';
+  const initials = member.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  const roleAbbr = member.role === 'Director Técnico' ? 'DT'
+    : member.role === 'Manager' ? 'MGR'
+    : 'MKT';
+
+  return (
+    <div
+      className="card-glow spotlight-card inline-flex items-center gap-4 bg-[#101d3f]/40 border border-[#c9a84c]/10 rounded-sm px-5 py-3.5"
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      }}
+    >
+      <div className="w-12 h-12 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/5 flex items-center justify-center overflow-hidden relative shrink-0">
+        {photoUrl && !imgError && (
+          <img
+            src={photoUrl}
+            alt={member.name}
+            className={`w-full h-full object-cover transition-opacity duration-500 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setImgLoaded(true)}
+            onError={() => setImgError(true)}
+            loading="lazy"
+          />
+        )}
+        {(!photoUrl || imgError || !imgLoaded) && (
+          <span className="font-bebas text-[18px] text-[#c9a84c]/60 absolute">{imgLoaded ? '' : (roleAbbr || initials)}</span>
+        )}
+      </div>
+      <div>
+        <div className="font-oswald font-semibold text-[14px] tracking-[0.05em] uppercase text-white">{member.name}</div>
+        <div className="flex items-center gap-3 mt-0.5">
+          <span className="text-[11px] text-[#c9a84c]/60 font-light">{member.role}</span>
+          {member.instagram && (
+            <span className="text-[11px] text-[#b0b8c8]/40">@{member.instagram}{member.igFollowers ? ` · ${member.igFollowers}` : ''}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Squad({ id, title, subtitle, players, staff, onSelectPlayer }: Props) {
   const { ref, isVisible } = useInView(0.05);
   const [showAll, setShowAll] = useState(false);
   const visiblePlayers = showAll ? players : players.slice(0, 8);
@@ -40,27 +87,12 @@ export function Squad({ id, title, subtitle, players, accent: _accent = 'blue', 
           </div>
         </div>
 
-        {/* DT card */}
-        {dt && (
-          <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{transitionDelay: '0.2s'}}>
-            <div className="card-glow spotlight-card inline-flex items-center gap-4 bg-[#101d3f]/40 border border-[#c9a84c]/10 rounded-sm px-6 py-4"
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-              }}
-            >
-              <div className="w-12 h-12 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/5 flex items-center justify-center">
-                <span className="font-bebas text-[18px] text-[#c9a84c]/60">DT</span>
-              </div>
-              <div>
-                <div className="font-oswald font-semibold text-[14px] tracking-[0.05em] uppercase text-white">{dt.name}</div>
-                <div className="flex items-center gap-3 mt-0.5">
-                  <span className="text-[11px] text-[#c9a84c]/60 font-light">{dt.role}</span>
-                  <span className="text-[11px] text-[#b0b8c8]/40">@{dt.instagram} · {dt.igFollowers}</span>
-                </div>
-              </div>
-            </div>
+        {/* Staff cards */}
+        {staff && staff.length > 0 && (
+          <div className={`mb-8 flex flex-wrap gap-3 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '0.2s' }}>
+            {staff.map((member) => (
+              <StaffCard key={member.instagram} member={member} />
+            ))}
           </div>
         )}
 

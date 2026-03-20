@@ -35,7 +35,21 @@ export const actores: Player[] = [
   { name: "Giuli Montepaone", number: 99, position: "Arquero", instagram: "giulimontepaone", igFollowers: "75K", tiktok: "giulimontepaone", tkFollowers: "3K", type: "actor" },
 ];
 
-export const dt = { name: "Rolfi Montenegro", role: "Director Técnico", instagram: "rolfimontenegro", igFollowers: "86K", type: "actor" as const };
+export interface Staff {
+  name: string;
+  role: string;
+  instagram: string;
+  igFollowers: string;
+  type: "actor" | "actriz";
+}
+
+export const staff: Staff[] = [
+  { name: "Rolfi Montenegro", role: "Director Técnico", instagram: "rolfimontenegro", igFollowers: "86K", type: "actor" },
+  { name: "Eze Antonini", role: "Manager", instagram: "ezeeantonini", igFollowers: "125K", type: "actor" },
+  { name: "Agus Home", role: "Director de Marketing", instagram: "agustinhome", igFollowers: "", type: "actor" },
+];
+
+export const dt = staff[0];
 
 export const actrices: Player[] = [
   { name: "Cele Pamio", instagram: "celepamio", igFollowers: "2.8M", tiktok: "celepamio", tkFollowers: "3.5M", type: "actriz" },
